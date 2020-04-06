@@ -1,0 +1,78 @@
+﻿@using MyEvernote.Entities
+@model People
+
+@{
+    ViewBag.Title = "Profiliniz";
+}
+
+<!--Basic User Details Ends-->
+<section id="user-area">
+    <div class="row">
+        <div class="col-xl-3 col-lg-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="align-self-center halfway-fab text-center">
+                            <a class="profile-image">
+                                <img src="~/images/@Model.ProfileImageFilename" class="rounded-circle img-border gradient-summer width-100" alt="Card image">
+                            </a>
+                        </div>
+                        <div class="text-center">
+                            <span class="font-medium-2 text-uppercase">@(Model.Name + " " + Model.Surname)</span>
+                            <p class="grey font-small-2">@Model.Username</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-12">
+            <!--About div starts-->
+            <div id="about">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title-wrap bar-warning">
+                                    <div class="card-title">Diğer Bilgiler</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <ul class="no-list-style">
+                                                <li class="mb-2">
+                                                    <span class="primary text-bold-500"><a><i class="ft-mail font-small-3"></i> Email</a></span>
+                                                    <span class="line-height-2 display-block overflow-hidden">@Model.Email</span>
+                                                </li>
+                                                <li class="mb-2">
+                                                    <span class="primary text-bold-500"><a><i class="ft-phone font-small-3"></i> Telefon Numaram </a></span>
+                                                    <span class="line-height-2 display-block overflow-hidden">@Model.PhoneNumber</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <ul class="no-list-style">
+                                                <li class="mb-2">
+                                                    <span class="primary text-bold-500"><a><i class="ft-activity font-small-3"></i> Departmanım</a></span>
+                                                    <span class="line-height-2 display-block overflow-hidden">@Model.Job </span>
+                                                </li>
+                                                <li class="mb-2">
+                                                    <span class="primary text-bold-500"><a><i class="ft-home font-small-3"></i> Adresim</a></span>
+                                                    <span class="line-height-2 display-block overflow-hidden">@Model.Address</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--About div ends-->
+        </div>
+    </div>
+</section>
+<!--User Profile Starts-->

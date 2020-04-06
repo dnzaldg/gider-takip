@@ -1,0 +1,85 @@
+﻿@using MyEvernote.WebApp.Models
+@model MyEvernote.Entities.Spend
+
+@{
+    ViewBag.Title = "Harcama Düzenle";
+}
+
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Harcama</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Product, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Product, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Price, 5, 30, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Piece, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Piece)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Zaman, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Zaman)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CategoryId, "Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                @if (CurrentSession.User.IsAdmin)
+                {
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PeopleId, "Personel", htmlAttributes: new { @class = "control-label col-md-3" })
+                            @Html.DropDownList("PeopleId", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    @Html.Hidden("PeopleId", CurrentSession.User.Id, htmlAttributes: new { @class = "form-control" })
+                }
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Bootstrap.Button("success", string.Empty, "submit", "floppy-saved", " Kaydet")
+                        @Bootstrap.LinkButton("/Spend/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön!")
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

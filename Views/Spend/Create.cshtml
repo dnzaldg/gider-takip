@@ -1,0 +1,90 @@
+﻿@using MyEvernote.WebApp.Models
+
+@model MyEvernote.Entities.Spend
+
+@{
+    ViewBag.Title = "Harcama Ekle";
+}
+    <link href="~/Content/validation-summary.css" rel="stylesheet" />
+<section id="basic-form-layouts">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="px-3">
+                        @using (Html.BeginForm())
+                        {
+
+                            @Html.AntiForgeryToken()
+                            <div class="form-body">
+                                <h4 class="form-section">
+                                    <i class="icon-basket"></i> Harcama İşlemleri
+                                </h4>
+                                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            <div class="row">
+                                @if (CurrentSession.User.IsAdmin)
+                                {
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.PeopleId, "Personel", htmlAttributes: new { @class = "control-label col-md-3" })
+                                            @Html.DropDownList("PeopleId", null, htmlAttributes: new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @Html.Hidden("PeopleId", CurrentSession.User.Id, htmlAttributes: new { @class = "form-control" })
+                                }
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CategoryId, "Kategori", htmlAttributes: new { @class = "control-label col-md-3" })
+                                        @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Product, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        @Html.EditorFor(model => model.Product, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        @*@Html.ValidationMessageFor(model => model.Product, "", new { @class = "text-danger" })*@
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-6" })
+                                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Piece, htmlAttributes: new { @class = "control-label col-md-3" })
+                                        @Html.EditorFor(model => model.Piece, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Zaman, htmlAttributes: new { @class = "control-label col-md-3" })
+                                        @Html.EditorFor(model => model.Zaman, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            </div>
+                            <div class="form-actions">
+                                @Bootstrap.Button("success", string.Empty, "submit", "plus", " Kaydet")
+                                @Bootstrap.LinkButton("/Spend/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön!")
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,56 @@
+﻿@using MyEvernote.WebApp
+@model IEnumerable<MyEvernote.Entities.Category>
+
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+<!-- Multiple table control elements -->
+<section id="multiple-table">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title-wrap bar-info">
+                        <h4 class="card-title">@Bootstrap.LinkButton("/Category/Create", "primary", string.Empty, string.Empty, "plus", " Yeni")</h4>
+                    </div>
+                </div>
+                <div class="card-body collapse show">
+                    <div class="card-block card-dashboard">
+                        <table id="dt-select" class="table table-striped table-bordered multiple-control-elements">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CategoryType)
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CategoryType)
+                                        </td>
+
+                                        <td width="150">
+                                            <a href="/Category/Edit/@item.Id" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal_comment" data-note-id="@item.Id">
+                                                <span class="fa fa-edit"></span>
+                                            </a>
+                                            <a href="/Category/Delete/@item.Id" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal_comment" data-note-id="@item.Id">
+                                                <span class="fa fa-trash"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Multiple table control elements -->

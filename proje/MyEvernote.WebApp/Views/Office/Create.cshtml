@@ -1,0 +1,75 @@
+﻿@model MyEvernote.Entities.Office
+
+@{
+    ViewBag.Title = "Ofis Ekle";
+}
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+
+    <section id="basic-form-layouts">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="px-3">
+
+                            @Html.AntiForgeryToken()
+                            <div class="form-body">
+                                <h4 class="form-section">
+                                    <i class="icon-map"></i> Ofis Kayıt
+                                </h4>
+                                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.OfficeName, htmlAttributes: new { @class = "control-label col-md-3" })
+                                            @Html.EditorFor(model => model.OfficeName, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FirmaEmail, htmlAttributes: new { @class = "control-label col-md-3" })
+                                            @Html.EditorFor(model => model.FirmaEmail, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FirmaPhone, htmlAttributes: new { @class = "control-label col-md-12" })
+                                            @Html.EditorFor(model => model.FirmaPhone, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "control-label col-md-3" })
+                                            @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-3" })
+                                            @Html.TextAreaFor(model => model.Address, 5, 30, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-actions">
+                                @Bootstrap.Button("success", string.Empty, "submit", "plus", " Kaydet")
+                                @Bootstrap.LinkButton("/Office/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön!")
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     }

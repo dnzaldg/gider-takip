@@ -1,0 +1,85 @@
+﻿@model MyEvernote.Entities.Spend
+
+@{
+    ViewBag.Title = "Harcama Kaldır";
+}
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h3>Silmek istediğinize emin misiniz?</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.CategoryType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.CategoryType)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.People.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.People.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Product)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Product)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Piece)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Zaman)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Zaman)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Result)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Result)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Bootstrap.Button("danger", string.Empty, "submit", "remove", " Kaldır")
+                @Bootstrap.LinkButton("/Spend/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön!")
+            </div>
+        }
+
+    </div>
+
+</div>

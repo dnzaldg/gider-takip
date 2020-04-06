@@ -1,0 +1,56 @@
+﻿@using MyEvernote.Entities
+@model List<Spend>
+
+@{
+    ViewBag.Title = "Index";
+}
+<!--Basic Table Starts-->
+<section id="simple-table">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title-wrap bar-success">
+                        <h4 class="card-title">Günlük Harcamalar</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-block">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Harcama Tarihi</th>
+                                    <th>Personel Adı</th>
+                                    <th>Ürün Adı</th>
+                                    <th>İşlem Tutarı</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Spend spend in Model)
+                                {
+                                    <tr>
+                                        <th scope="row">@spend.Zaman.ToShortDateString()</th>
+                                        <td>@spend.People.Name</td>
+                                        <td>@spend.Product.ToUpper()</td>
+                                        <td>@spend.Result</td>
+                                    </tr>
+                                }
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Basic Table Ends-->
+
+@section footer{
+    @Html.Partial("_PartialFooter")
+}
+
+
+
+<script src="~/Scripts/comment.js"></script>
+<script src="~/Scripts/like.js"></script>
+<script src="~/Scripts/NoteDetailPopup.js"></script>

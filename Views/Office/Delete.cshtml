@@ -1,0 +1,74 @@
+﻿@model MyEvernote.Entities.Office
+
+@{
+    ViewBag.Title = "Ofisi Kaldır";
+}
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+     
+        <h3>Ofisi silmek istediğinize emin misiniz?</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.OfficeName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OfficeName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirmaEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirmaEmail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirmaPhone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirmaPhone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Website)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Website)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Bootstrap.Button("danger", string.Empty, "submit", "remove", " Kaldır")
+                @Bootstrap.LinkButton("/Office/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön!")
+            </div>
+        }
+
+    </div>
+
+</div>
+
+

@@ -1,0 +1,43 @@
+﻿@using MyEvernote.WebApp
+@model MyEvernote.Entities.Category
+
+@{
+    ViewBag.Title = "Kategori Düzenle";
+}
+
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Kategori Güncelle</h4>
+                <hr />
+
+                @Html.ValidationSummary(false)
+
+                @Html.HiddenFor(model => model.Id)
+
+             
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CategoryType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CategoryType, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Bootstrap.Button("success", string.Empty, "submit", "floppy-saved", " Kaydet")
+                        @Bootstrap.LinkButton("/Category/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön!")
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
